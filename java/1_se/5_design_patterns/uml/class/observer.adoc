@@ -1,0 +1,37 @@
+[plantuml]
+....
+@startuml
+
+interface  MoveResultListener{
+   +notifyActionResult(): void
+}
+
+class FrameGame implements MoveResultListener{
+   +notifyActionResult(): void
+}
+
+interface  MoveResultNotifier{
+   +notifyMoveListeners(ActionResult, GoldMan): void
+}
+
+interface  GameCollection extends MoveResultNotifier{
+}
+
+abstract class MapListenersRegistrator implements GameCollection{
+   -listeners: ArrayList
+   +getMoveListeners(): List
+   +addMoveListener(MoveResultListener): void
+   +removeMoveListener(MoveResultListener): void
+   +removeAllLMoveisteners(): void
+}
+
+class MapCollection extends MapListenersRegistrator{
+   +notifyMoveListeners(ActionResult, GoldMan): void
+}
+
+
+
+MoveResultListener -o MapListenersRegistrator
+
+@enduml
+....

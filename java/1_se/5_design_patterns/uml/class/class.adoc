@@ -1,0 +1,39 @@
+[plantuml]
+....
+@startuml
+
+interface StaticObject
+interface MovingObject
+
+abstract AbstractGameObject
+abstract AbstractMovingObject
+
+
+
+StaticObject <|.. AbstractGameObject: implements
+MovingObject <|.. AbstractMovingObject: implements
+
+AbstractGameObject o- Coordinate: locate
+AbstractGameObject <|-- AbstractMovingObject: extends
+
+AbstractMovingObject <|--- Goldman: extends
+AbstractMovingObject <|--- Monster: extends
+
+AbstractGameObject <|--- Treasure: extends
+AbstractGameObject <|--- Wall: extends
+AbstractGameObject <|--- Exit: extends
+AbstractGameObject <|--- Nothing: extends
+
+Player "1" o-- "0..*" Score: collect
+
+Player "1" *-- "1" Goldman : controls
+
+GameZone "1" *-- "1..*" Treasure: contains
+GameZone "1" *-- "*" Wall: contains
+GameZone "1" *-- "1" Exit: contains
+GameZone "1" *-- "*" Nothing: contains
+GameZone "1" *-- "1" Goldman: contains
+GameZone "1" *-- "1..*" Monster: contains
+
+@enduml
+....

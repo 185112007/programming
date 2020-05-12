@@ -1,0 +1,49 @@
+=== Bileşik (Composite)
+Bileşik tasarım şablonu bir sistemin bütünü ve parçaları arasındaki ilişkileri 
+modellemek için kullanılmaktadır. Sistemin bütününü oluşturan parçalar, kendi 
+içlerinde alt parçalardan oluşabilir. Bileşik tasarım şablonu kullanıcı sınıfın, 
+sistem, sistemin parçaları ve alt parçalar arasında ayrım yapmadan nesneleri 
+kullanmasına izin vermektedir. Bu şekilde sistem yazılımı ve kullanımı daha 
+sadeleştirilmektedir.
+
+[plantuml]
+....
+@startuml
+
+interface GameObject {
+   +getType(): GameObjectType
+}
+
+class GoldMan implements GameObject{
+   -type: GameObjectType
+   +getType(): GameObjectType
+}
+
+class Monster implements GameObject{
+   -type: GameObjectType
+   +getType(): GameObjectType
+}
+
+class Wall implements GameObject{
+   -type: GameObjectType
+   +getType(): GameObjectType
+}
+
+class Game implements GameObject{
+   -listOfObjects: ArrayList
+   +getType(): GameObjectType
+   +addComponent(GameObject): void
+   +delComponent(GameObject): void
+   +getComponent(index: Integer): GameObject
+}
+
+GameObject <--o Game
+Client -> GameObject
+
+@enduml
+....
+
+=== Bileşik tasarım şablonu ne zaman kullanılır?
+* Bir nesnenin bütünü ve parçaları arasındaki ilişkiyi modellemek için.
+* Eğer kullanıcı sınıf için nesnenin parçaları ve kendisi üzerinde yapılan işlemlerin 
+transparen olması isteniyorsa.

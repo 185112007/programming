@@ -1,0 +1,16 @@
+<<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <<script type="text/javascript">
+      'use strict';
+
+      if (-1 || 0) alert('first');          // ? first
+      if (-1 && 0) alert('second');         // ?
+      if (null || -1 && 1) alert('third');  // ? third
+    </script>
+  </body>
+</html>

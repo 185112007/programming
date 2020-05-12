@@ -1,0 +1,29 @@
+<<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <<script type="text/javascript">
+      'use strict';
+
+      let userName = prompt("Who's there?","");
+
+      if(userName == "admin"){
+        let pass = prompt("Password?","");
+        if(pass == "admin"){
+          alert("Hello");
+        }else if(pass == "" || pass == null){
+          alert("Canceled");
+        }else{
+          alert("Incorrecd password");
+        }
+      }else if(userName == "" || userName == null){
+        alert('Canceled');
+      }else{
+        alert("I don't know you");
+      }
+    </script>
+  </body>
+</html>

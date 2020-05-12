@@ -1,0 +1,43 @@
+=== Döngücü (Iterator Pattern)
+Döngücü tasarım şablonu ile bir listede yer alan nesnelere sırayla, listenin yapısını ve çalışma
+tarzını bilmek zorunluluğumuz olmadan erişebilir ve bu nesneler üzerinde işlem yapabiliriz.
+
+[plantuml]
+....
+@startuml
+
+abstract class AbstractGameObject {
+  +getType() : GameObjectType
+  +GameObjectType(): Iterator
+}
+
+class Nothing implements AbstractGameObject{
+  -int[] pixelColor
+  
+  +getType() : GameObjectType
+  +GameObjectType(): ArrayIterator
+}
+
+interface Iterator {
+   
+   hasNext() :  boolean
+
+   next() : Object
+}
+
+class ArrayIterator implements Iterator{
+  hasNext() :  boolean
+
+   next() : Object
+}
+
+Client -left-> Nothing
+Client -right-> Iterator 
+
+@enduml
+....
+
+=== Döngücü tasarım şablonu ne zaman kullanılır?
+Sınıflar bünyelerinde başka nesneleri barındırmak için değişik tipte listelere sahip olabilirler. Bu
+sınıfların nasıl implemente edildiği saklamak ve sahip oldukları listeler üzerinde işlem yapmayı
+kolaylaştırmak için döngücü tasarım şablonu kullanılır.

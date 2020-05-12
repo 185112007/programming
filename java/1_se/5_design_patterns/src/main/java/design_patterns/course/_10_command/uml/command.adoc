@@ -1,0 +1,83 @@
+=== Command Pattern(Komut)
+
+Komut tasarım şablonunu açıklamak için televizyonu uzaktan yönetme aletini örnek olarak
+verilebilir. Kanalları değiştirmek için yönetme aleti üzerinde belirli bir tuşa basarız.
+Tuşa basıldığı anda yönetme aleti televizyona bir komut göndererek, kanalın değişmesini sağlar.
+Aynı şekilde televizyonu açıp, kapatmak ve ses ve renk ayarlarını yapmak için değişik tuşlar
+kullanılır.
+
+Kullanıcı olarak tuşa basıldığında televizyon bünyesinde ne gibi bir işlemin yapıldığı hakkında bilgi
+sahibi olmamız gerekmiyor. Bunu alıcının (televizyon) bilmesi yeterlidir. Bilmemiz gereken tek şey,
+hangi tuşun altında hangi komutun olduğudur.
+
+Bir nesne üzerinde bir işleminin nasıl yapıldığını bilmediğimiz ya da kullanılmak istenen nesneyi
+tanımadığımız durumlarda, komut tasarım şablonu ile yapılmak istenen işlemi bir nesneye
+dönüştürerek, alıcı nesne tarafından işlemin yerine getirilmesi sağlıyabiliriz.
+
+[plantuml]
+....
+@startuml
+
+class OyunKarakteri {
+   +sagaGit(): void
+   +solaGit(): void
+   +yukariGit(): void
+   +asagiyaGit(): void
+}
+
+interface Komut{
+   +execute(): void
+}
+
+class SagaGitKomutu{
+   +execute(): void
+}
+
+class SolaGitKomutu{
+   +execute(): void
+}
+
+class YukarıGitKomutu{
+   +execute(): void
+}
+
+class AsagiyaGitKomutu{
+   +execute(): void
+}
+
+class HareketYonetimi{
+
+}
+
+class Client{
+
+}
+
+Komut <|.. SagaGitKomutu
+Komut <|.. SolaGitKomutu
+Komut <|.. YukarıGitKomutu
+Komut <|.. AsagiyaGitKomutu
+
+HareketYonetimi *. Komut
+
+Client -> OyunKarakteri
+
+SagaGitKomutu --> OyunKarakteri
+SolaGitKomutu --> OyunKarakteri
+YukarıGitKomutu --> OyunKarakteri
+AsagiyaGitKomutu --> OyunKarakteri
+
+Client ..> SagaGitKomutu
+Client ..> SolaGitKomutu
+Client ..> YukarıGitKomutu
+Client ..> AsagiyaGitKomutu
+
+@enduml
+....
+
+=== Komut tasarım şablonu ne zaman kullanılır?
+
+Yapmak istediğimiz işlemi ya da işlemin ait olduğu nesneyi tanımadığımız durumlarda komut
+tasarım şablonu kullanılır. Bir komut haline getirilen işlem, alıcı nesneye iletilerek, işlem
+gerçekleştirilir. Böylece komutu gönderen nesne ile işlemi gerçekleştirien nesne arasında esnek bir
+bağ oluşturulur. İki nesne birbirini tanımak zorunda değildir.

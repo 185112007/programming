@@ -1,0 +1,24 @@
+==== Tekillik (Singleton Pattern)
+
+Bazı şartlar altında bir sınıftan sadece bir nesnenin oluşturulması ve oluşturulan bu 
+nesnenin tüm sistemde kullanılması gerekebilir. Örneğin veri tabanı için bir bağlantı 
+havuzu nesnesi (connection pool) sadece bir defa oluşturulmalı ve kullanılmalıdır. Bu 
+durumda tekillik tasarım şablonu kullanılarak, bir sınıftan sadece bir nesnenin 
+oluşturulması sağlanabilir.
+
+[plantuml]
+....
+@startuml
+
+class GameZoneSingleton {
+   -instance: GameZoneSingleton
+   +instance(): GameZoneSingleton
+}
+
+@enduml
+....
+
+=== Tekillik tasarım şablonu ne zaman kullanılır?
+
+Sistem bünyesinde bir sınıftan sadece bir nesne oluşturulması bu nesnenin kullanılması 
+gerektiği durumlarda singleton tasarım şablonu kullanılır.

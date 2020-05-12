@@ -1,0 +1,87 @@
+[plantuml]
+.Use-Case Diyagramı 1.Sürüm
+....
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+actor user
+rectangle "Asansor Yönetim Sistemi"{
+  user -- (kapıyı aç)
+  user -- (kapıyı kapat)
+  user -- (yukarı çık)
+  user -- (aşağıya in)
+  user -- (kat seç)
+}
+@enduml
+....
+
+[plantuml]
+.Use-Case Diyagramı 2.Sürüm
+....
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+actor user
+rectangle "Asansor Yönetim Sistemi"{
+  
+  user -- (kapıyı aç)
+  user -- (kapıyı kapat)
+  user -- (aşağıya in)
+  user -- (kat seç)
+  user -- (yukarı çık)
+  
+  (kapıyı aç) <.. (otomatik aç): extend
+  (kapıyı kapat) <.. (otomatik kapat): extend
+  (yukarı çık) ..> (asansörü çağır): include
+  (aşağıya in) ..> (asansörü çağır): include
+  (kat seç) .> (kapıyı kapat): include
+}
+@enduml
+....
+
+[plantuml]
+.Use-Case Diyagramı 3.Sürüm
+....
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+actor user
+actor engineer
+actor security
+rectangle "Asansor Yönetim Sistemi"{
+
+  user -- (kat seç)
+  user -- (kapıyı aç)
+  user -- (kapıyı kapat)
+  user -- (yukarı çık)
+  user -- (aşağıya in)
+  user -- (yardıma çağır)
+  
+  (kat seç) ..> (otomatik kapat): include
+  (kat seç) ..> (seçilen kata in/çık): include
+  (kapıyı aç) <.. (otomatik aç): extend
+  (kapıyı kapat) <.. (otomatik kapat): extend
+  (kapıyı aç) ...> (kapı kapalı mı): include
+  (yukarı çık) ..> (asansörü çağır): include
+  (aşağıya in) ..> (asansörü çağır): include
+  (otomatik aç) ..> (kapı kapalı mı): include
+  (otomatik kapat) ..> (kapı açık mı): include
+  (kapıyı kapat) ...> (kapı açık mı): include
+  (yardıma çağır) ..> (guvenligi ara): include
+  (yardıma çağır) ..> (yardım alarmı çal): include
+  
+  user <|- engineer
+  
+  (asansörü çalıştır) -- engineer
+  (asansörü durdur) -- engineer
+  
+  user <|- security
+  
+  security -- (alarmı kapat)
+  security -- (kullanıcıya cevap ver)
+  security -- (arızayı gider)
+  
+  
+}
+@enduml
+....

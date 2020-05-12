@@ -1,0 +1,136 @@
+= Asansör Yönetim Sistemi: Analiz Dökümanı
+:author: Gafur Hayytbayev
+:email: gafur.hayytbayev@gmail.com
+:toc: left
+
+== Giriş
+
+Bu, Asansör Yönetim Sisteminin yazılım ihtiyaçları analiz dokümanıdır. 
+Dokümanda fonksiyonel ihtiyaçlar başlığı altında sistemin süreçleri ve 
+kavramsal kullanım şekilleri bulunmaktadır.
+
+<<<
+
+== Fonksyonel İhtiyaçlar
+
+Fonksiyonel ihtiyaçlar, sistemin dışarıdan gözlemlenebilen davranışlarıdır. 
+Fonksiyonel ihtiyaçlar ağırlıkla sistemin iş süreçlerini içerir. 
+Süreçler ise bu dokümanda use-case olarak yakalanıp detaylandırılmıştır. 
+Süreçlerde geçen ve sistemin fonksiyonel özellikleri olarak görülebilecek tekil 
+fonksiyonel ihtiyaçlar süreçlerden sonra maddeler halinde ifade edilmiştir.
+
+==== Kullanım şekilleri(Use-cases)
+
+Sistemin iş süreçleri use-case olarak ifade edilmiştir. Aşağıda 
+use-case'ler önce UML’in kullanım şekli diyagramında gösterilmiştir. 
+Sonrasında ise conceptual-use-case olarak detaylandırılmıştır.
+
+Aşağıdaki 1.Sürüm use-case diyagramı kullanıcı ve sistem arasındaki 
+temel işlevleri yerine getirmektedir.
+
+image::image/1-surum.PNG[Use-Case-1]
+
+2.Sürüm use-case'de ilk sürüm biraz daha detaylandırılmıştır.
+
+image::image/2-surum.PNG[Use-Case-2]
+
+Sistemin use-case diyagramının son sürümünde sistemin fonksyonel
+özellikleri, aktör->usecase, use-case->use-case ilişkileri, aktör'ler arasındaki
+miras alma ilişkileri tamamlanmıştır.
+
+image::image/3-surum.PNG[Use-Case-3]
+
+==== Kavramsal kullanım şekilleri(Conceptual use cases)
+
+Kavramsal kullanım şekilleri (conceptual use cases), sistemin süreçlerini, 
+akış detaylarına girmeden özet olarak verir.
+
+Kavramsal kullanım şekilleri şunlardır:
+
+[cols="h,4"]
+|===
+|No		  		|1 
+|İsim	  		|Aşağıya İn
+|Aktörler		|User 
+|Kısa Açıklama	|Aktör asansörü çağırır 
+|===
+
+[cols="h,4"]
+|===
+|No		  		|2 
+|İsim	  		|Yukarı Çık
+|Aktörler		|User 
+|Kısa Açıklama	|Aktör asansörü çağırır 
+|===
+
+[cols="h,4"]
+|===
+|No		  		|3 
+|İsim	  		|Kapıyı Kapat
+|Aktörler		|User 
+|Kısa Açıklama	|Aktör kapıyı kapatır(veya kendisi otomatik kapanır)
+|===
+
+[cols="h,4"]
+|===
+|No		  		|4 
+|İsim	  		|Kapıyı Aç
+|Aktörler		|User 
+|Kısa Açıklama	|Aktör kapıyı açar(veya kapı otomatik açılır) 
+|===
+
+[cols="h,4"]
+|===
+|No		  		|5 
+|İsim	  		|Kat Seç
+|Aktörler		|User 
+|Kısa Açıklama	|Aktör gitmek istediği katı seçer 
+|===
+
+[cols="h,4"]
+|===
+|No		  		|6
+|İsim	  		|Yardıma Çağır
+|Aktörler		|User 
+|Kısa Açıklama	|Aktör asansör arızalandığında yardım butonuna tıklar 
+|===
+
+[cols="h,4"]
+|===
+|No		  		|7
+|İsim	  		|Arızayı Gider
+|Aktörler		|Security
+|Kısa Açıklama	|Aktör arızayı giderir 
+|===
+
+[cols="h,4"]
+|===
+|No		  		|8
+|İsim	  		|Alarmı Kapat
+|Aktörler		|Security
+|Kısa Açıklama	|Aktör alarmı kapatır 
+|===
+
+[cols="h,4"]
+|===
+|No		  		|9
+|İsim	  		|Kullanıcıya Cevap Ver
+|Aktörler		|Security
+|Kısa Açıklama	|Aktör yardım aramasına cevap verir 
+|===
+
+[cols="h,4"]
+|===
+|No		  		|10
+|İsim	  		|Asansörü Çalıştır
+|Aktörler		|Engineer
+|Kısa Açıklama	|Aktör asansörü çalıştırır. 
+|===
+
+[cols="h,4"]
+|===
+|No		  		|11
+|İsim	  		|Asansörü Durdur
+|Aktörler		|Engineer
+|Kısa Açıklama	|Aktör asansörü durdurur 
+|===

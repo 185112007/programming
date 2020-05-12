@@ -1,0 +1,39 @@
+=== Prototip (Prototype)
+Sistem içinde kullanılan bazı nesnelerin oluşturulmaları, değişik kaynakları kullandıklarından
+dolayı zaman alıcı olabilir. Bu gibi nesneler new operatörü ile yeniden oluşturulmak yerine,
+prototip tasarım şablonu kullanılarak, mevcut bir nesneden klonlanabilirler. Bu şekilde oluşan
+nesne bir prototiptir ve set metodları kullanılarak istenilen özelliklere göre yapılandırılabilir.
+
+[plantuml]
+....
+@startuml
+
+interface PrototypeCapable{
+   +shallowCopy(): PrototypeCapable 
+   +deepCopy() PrototypeCapable 
+}
+
+abstract class AbstractCoordinate implements PrototypeCapable{
+
+}
+
+class Coordinate2D extends AbstractCoordinate{
+   +shallowCopy(): PrototypeCapable 
+   +deepCopy() PrototypeCapable
+}
+
+class Coordinate3D extends AbstractCoordinate{
+   +shallowCopy(): PrototypeCapable 
+   +deepCopy() PrototypeCapable
+}
+
+Client .> AbstractCoordinate
+
+@enduml
+....
+
+
+==== Prototip tasarım şablonu ne zaman kullanılır?
+Bir sistem bünyesinde büyük ve oluşturulmaları zaman alıcı nesneler bulunduğu taktirde.
+Sistem bünyesinde kullanılan sınıf hirarşilerini küçültmek ve kullanılan sınıf adedinin
+azaltılması gerektiğinde.

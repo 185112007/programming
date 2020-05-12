@@ -1,0 +1,97 @@
+# Oyun <Goldman>
+
+Bu oyunda, kullanıcı, canavarlar ve hazineleri içeren labirentteki karakteri 
+kontrol eder. Oyuncunun minimum hamle yaparak mümkün olduğunca fazla hazine toplaması 
+ve labirentten çıkması gerekir.
+
+Toplanan her hazine için oyuncu puan alır. Bir oyuncu bir canavar tarafından 
+yenilirse - oyun kazanılan puanla biter. Ayrıca, oyuncunun belirli sayıda adımdan sonra 
+labirentten çıkmakamazsa, oyun sona erer.
+
+Oyun tüm kullanıcılar için istatistikler ve en iyi sonuçları içerir.
+
+Bunlar oyunun başlangıç ​​koşullarıdır, gelişim sırasında bazı noktaları eklenecektir.
+
+
+### Temel kurallar
+
+Tüm oyun, içinde kare hücrelerin bulunduğu bir haritada (oyun alanı) gerçekleşir.
+
+Hücre aşağıdaki nesneleri içerebilir:
+
+* Boşluk
+* Duvar (tüm hücreyi doldurur)
+* Canavar
+* Hazine
+* Çıkış
+
+Tüm oyun nesneleri grafik resimlerle temsil edilmelidir.
+
+Haritanın çevresi etrafında da duvarlar var. Harita, belirli bir veri yapısına sahip bir 
+metin dosyasından yüklenir.
+
+Karakter, oyuna atanan konumdan başlar. Yukarı, aşağı, sola ve sağa hareket edebilir. 
+Ancak çapraz hareket edemez. Ayrıca hareket etmeden durabilir.
+
+Karakter yeni bir hücreye girdiğinde:
+
+* Hücrede bir canavar varsa, karakter ölür, oyun sonlandırılır.
+* Hazine - puan ekleme (hazine kaybolur)
+* Çıkış - puanlarda %80 artış, oyun sonlandırılır.
+
+Eğer bir hücrede birkaç nesne varsa, görüntü sırası şöyledir: canavar, hazine, çıkış.
+
+Oyunda, hamle sayısı da sınırlıdır, harita bilgileri dosyaya kaydediliştir(ilk satırda). 
+Tüm hareketlerin sonunda - çıkışa ulaşılmazsa - karakter ölür. Harita en az bir giriş ve 
+bir çıkış içermelidir, aksi takdirde yanlış olarak kabul edilir.
+
+Her hamleden sonra canavar, karaktere %50 olasılıkla yaklaşma şansına sahip. Canavar, 
+karakterle aynı yönde yürüyebilir.
+
+Oyuncu tüm haritanın mevcut konumunu koruyarak istediği zaman oyundan 
+ayrılabilir. Tekrar girdiğinde haritayı yükleyip oyuna devam edebilir. Bu oyunu kaybederse - 
+kaydedilen oyun silinmelidir.
+
+Oyun aşağıdaki ana menüyü içermelidir:
+
+* Yeni oyun
+* Oyunu yükle(kaldığın yerden devam etmek)
+* Istatistikler
+* Çık
+
+##### Yeni oyun
+
+Oyuncuya isim girmek için bir pencere görüntüler. İsim girme konusunda kısıtlamalar 
+var:
+
+* Aşağıdaki kelimeleri içermemelidir: Sir, King, Queen, Lord, Lady
+* Romen rakamları ile bitmemelidir (I, IV, vb.)
+
+İsmi başarıyla girdikten sonra, oyuncuya harita gösterilir ve oyun başlar. Oyun 
+sona erene kadar ana menüye erişilemez (kazan, kaybet veya kurtar). Başarısız giriş 
+yapıldıktan sonra - ana menüye döner.
+
+##### Oyunu yükle
+
+Oyuncunun ismini girmesi istenir. Aynı isimde bir kayıt bulunursa, oyun yüklenir. 
+Aksi takdirde, bir hata mesajı alır ve ana menüye döner. Bir oyuncu istediği sayıda 
+oyunu kendi adıyla kaydedebilir.
+
+##### İstatistik
+
+Tüm oyuncular için bir tablo sütüleri:
+
+* Oyuncu Adı
+* Toplanan Puan
+* Toplam oyun sayısı
+* Başarılı oyun sayısı
+
+Tablo "Toplanan Puan" sütunune göre azalan sırada sıralanmalıdır.
+
+##### Çıkış
+
+Oyundan çık.
+
+##### Yönetim
+
+Karakteri, klavyeden (oklar) veya kontrol düğmelerinden kontrol edilebilir olmalıdır.

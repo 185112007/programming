@@ -1,0 +1,454 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>gafur_hayytbayev_185112007</title><meta name="generator" content="MATLAB 9.3"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-11-18"><meta name="DC.source" content="gafur_hayytbayev_185112007.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><pre class="codeinput"><span class="comment">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span>
+<span class="comment">% FINITE DIFFERENCE SOLUTION OF POISSON' EQUATION:</span>
+<span class="comment">%           Vxx + Vyy = G</span>
+<span class="comment">% USING THE METHOD OF SUCCESSIVE OVER-RELAXATION</span>
+<span class="comment">%</span>
+<span class="comment">% NX    : NO. OF INTERVALS ALONG X-AXIS</span>
+<span class="comment">% NY    : NO. OF INTERVALS ALONG Y-AXIS</span>
+<span class="comment">% A X B : DIMENSION OF THE SOLUTION REGION</span>
+<span class="comment">% V(I,J): POTENTIAL AT GRID POINT (X,Y) = H*(I,J)</span>
+<span class="comment">%         WHERE I = 0,1,...,NX, J = 0,1,...,NY</span>
+<span class="comment">% H     : MESH SIZE</span>
+<span class="comment">% ***************************************************</span>
+
+clc; clear <span class="string">all</span>; close <span class="string">all</span>;
+
+<span class="comment">% SPECIFY BOUNDARY VALUES AND NECESSARY PARAMETERS</span>
+A=1;B=1;
+V1=0;V2=10;V3=20;V4=-10;
+NX=20; <span class="comment">% 4 12 20</span>
+NY=NX;
+H=A/NX;
+
+<span class="comment">%  SET INITIAL GUESS EQUAL TO ZEROS OR TO AVERAGE OF FIXED VALUES</span>
+<span class="keyword">for</span> I=1:NX-1
+    <span class="keyword">for</span> J=1:NY-1
+        V(I+1,J+1)=(V1+V2+V3+V4)/4.0;
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+<span class="comment">% SET POTENTIAL GUESS EQUAL TO ZEROS OR TO AVERAGE OF FIXED VALUES</span>
+<span class="keyword">for</span> I=1:NX-1
+    V(I+1,1)=V1;
+    V(I+1,NY+1)=V3;
+<span class="keyword">end</span>
+<span class="keyword">for</span> J=1:NY-1
+    V(1,J+1)=V4;
+    V(NX+1,J+1)=V2;
+<span class="keyword">end</span>
+V(1,1)=(V1+V4)/2.0;
+V(NX+1,1)=(V1+V2)/2.0;
+V(1,NY+1)=(V3+V4)/2.0;
+V(NX+1,NY+1)=(V2+V3)/2.0;
+
+<span class="comment">% FIND THE OPTIMUM OVER-RELAXATION FACTOR</span>
+T=cos(pi/NX)+cos(pi/NY);
+W=(8-sqrt(64-16*T^2))/(T^2);
+
+W4=W/4;
+
+<span class="comment">% ITERATION BEGINS</span>
+NCOUNT=0;
+loop=1;
+<span class="keyword">while</span> loop==1;
+    RMIN=0;
+    <span class="keyword">for</span> I=1:NX-1
+        X=H*I;
+        <span class="keyword">for</span> J=1:NY-1
+            Y=H*J;
+            G=-36.0*pi*X*(Y-1.0);
+            R=W4*(V(I+2,J+1)+V(I,J+1)+V(I+1,J+2)+V(I+1,J)-4.0*V(I+1,J+1)-G*H*H);
+            RMIN=RMIN+abs(R);
+            V(I+1,J+1)=V(I+1,J+1)+R;
+        <span class="keyword">end</span>
+    <span class="keyword">end</span>
+
+    RMIN=RMIN/(NX*NY);
+    <span class="keyword">if</span> (RMIN&gt;=0.0001)
+        NCOUNT=NCOUNT+1;
+        <span class="keyword">if</span> (NCOUNT&gt;100)
+            loop=0;
+            disp(<span class="string">'SOLUTION DOES NOT CONVERGE IN 100 ITERATIONS'</span>);
+        <span class="keyword">end</span>
+    <span class="keyword">else</span>
+        <span class="comment">% Then RMIN is less than .0001 and then solution has converged</span>
+        loop=0;
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+Vnum=V;
+
+<span class="comment">% Grab original points a through i</span>
+abc=zeros(1,9);
+a_tic=1;
+vec=[0:H:1];
+<span class="keyword">for</span> ii=.25:.25:.75
+    <span class="keyword">for</span> jj=.25:.25:.75
+        xind=find(vec==ii);
+        yind=find(vec==jj);
+        <span class="comment">% disp([xind,yind])</span>
+        abc(a_tic)=Vnum(xind,yind);
+        a_tic=a_tic+1;
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+<span class="comment">% OUTPUT THE FINITE DIFFERENCE APPROX, RESULTS</span>
+
+<span class="comment">% ---------------------------------------------------</span>
+<span class="comment">% CALCULATE THE EXACT SOLUTION</span>
+<span class="comment">%</span>
+<span class="comment">% POISSON'S EQUATION WITH HOMOGENEOUS BOUNDARY CONDITIONS</span>
+<span class="comment">% SOLVED BY SERIES EXPANSION</span>
+<span class="comment">%----------------------------------------------------</span>
+<span class="keyword">for</span> I=1:NX-1
+    X=H*I;
+    <span class="keyword">for</span> J=1:NY-1
+        Y=H*J;
+        SUM=0;
+        <span class="keyword">for</span> M=1:10  <span class="comment">% TAKE ONLY 10 TERMS OF THE SERIES</span>
+            FM=M;
+            <span class="keyword">for</span> N=1:10
+                FN=N;
+                FACTOR1=(FM*pi/A)^2+(FN*pi/B)^2;
+                FACTOR2=((-1)^(M+N))*144*A*B/(pi*FM*FN);
+                FACTOR3=1-(1-(-1)^N)/B;
+                FACTOR=FACTOR2*FACTOR3/FACTOR1;
+                SUM=SUM+FACTOR*sin(FM*pi*X/A)*sin(FN*pi*Y/B);
+            <span class="keyword">end</span>
+        <span class="keyword">end</span>
+        VH=SUM;
+
+        <span class="comment">% LAPLACE'S EQUATION WITH INHOMOGENEOUS BOUNDARY CONDITIONS</span>
+        <span class="comment">% SOLVED USING THE METHOD OF SEPARATION OF VARIABLES</span>
+
+        C1=4*V1/pi;
+        C2=4*V2/pi;
+        C3=4*V3/pi;
+        C4=4*V4/pi;
+        SUM=0;
+        <span class="keyword">for</span> K=1:10  <span class="comment">% TAKE ONLY 10 TERMS OF THE SERIES</span>
+            N=2*K-1;
+            AN=N;
+            A1=sin(AN*pi*X/B);
+            A2=sinh(AN*pi*(A-Y)/B);
+            A3=AN*sinh(AN*pi*X/B);
+            TERM1=C1*A1*A2/A3;
+            B1=sinh(AN*pi*X/A);
+            B2=sin(AN*pi*Y/B);
+            B3=AN*sinh(AN*pi*B/A);
+            TERM2=C2*B1*B2/B3;
+            D1=sin(AN*pi*X/B);
+            D2=sinh(AN*pi*Y/B);
+            D3=AN*sinh(AN*pi*A/B);
+            TERM3=C3*D1*D2/D3;
+            E1=sinh(AN*pi*(B-X)/A);
+            E2=sin(AN*pi*Y/A);
+            E3=AN*sinh(AN*pi*B/A);
+            TERM4=C4*E1*E2/E3;
+            TERM=TERM1+TERM2+TERM3+TERM4;
+            SUM=SUM+TERM;
+        <span class="keyword">end</span>
+        VI=SUM;
+        Vexact(I+1,J+1)=VH+VI;
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+<span class="comment">% GRAB ORIGINAL POINTS A THROUGH i</span>
+abc2=zeros(1,9);
+a_tic=1;
+vec=[0:H:1];
+<span class="keyword">for</span> ii=.25:.25:.75
+    <span class="keyword">for</span> jj=.25:.25:.75
+        xind=find(vec==ii);
+        yind=find(vec==jj);
+        <span class="comment">% disp([xind,yind]);</span>
+        abc2(a_tic)=Vexact(xind,yind);
+        a_tic=a_tic+1;
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+figure(1),
+imagesc(flipud(Vnum')),
+colorbar
+ylabel(<span class="string">'y'</span>),    xlabel(<span class="string">'x'</span>)
+title(<span class="string">'Example 3.4: Poisson PDE'</span>)
+
+format <span class="string">short</span> <span class="string">g</span>
+
+disp([<span class="string">'h='</span>, num2str(H)])
+disp([<span class="string">'w ='</span>,num2str(W)])
+disp([<span class="string">''</span>,num2str(NCOUNT),<span class="string">' iterations'</span>]);
+disp(<span class="string">'|-------------------------------|'</span>)
+disp(<span class="string">'|      numerical  | exact       |'</span>)
+disp(<span class="string">'|-------------------------------|'</span>)
+disp([abc' abc2'])
+</pre><pre class="codeoutput">h=0.05
+w =1.7295
+43 iterations
+|-------------------------------|
+|      numerical  | exact       |
+|-------------------------------|
+      -3.4239      -3.4293
+      -2.0121      -2.0285
+       4.2769       4.2773
+     -0.10872     -0.11822
+       2.9206       2.9135
+       9.5784       9.5926
+       2.9092       2.9019
+       6.0692       6.0652
+       11.126       11.133
+
+</pre><img vspace="5" hspace="5" src="gafur_hayytbayev_185112007_01.png" alt=""> <p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2017b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FINITE DIFFERENCE SOLUTION OF POISSON' EQUATION:
+%           Vxx + Vyy = G
+% USING THE METHOD OF SUCCESSIVE OVER-RELAXATION
+%
+% NX    : NO. OF INTERVALS ALONG X-AXIS
+% NY    : NO. OF INTERVALS ALONG Y-AXIS
+% A X B : DIMENSION OF THE SOLUTION REGION
+% V(I,J): POTENTIAL AT GRID POINT (X,Y) = H*(I,J)
+%         WHERE I = 0,1,...,NX, J = 0,1,...,NY
+% H     : MESH SIZE
+% ***************************************************
+
+clc; clear all; close all;
+
+% SPECIFY BOUNDARY VALUES AND NECESSARY PARAMETERS
+A=1;B=1;
+V1=0;V2=10;V3=20;V4=-10;
+NX=20; % 4 12 20
+NY=NX;
+H=A/NX;
+
+%  SET INITIAL GUESS EQUAL TO ZEROS OR TO AVERAGE OF FIXED VALUES
+for I=1:NX-1
+    for J=1:NY-1
+        V(I+1,J+1)=(V1+V2+V3+V4)/4.0;
+    end
+end
+
+% SET POTENTIAL GUESS EQUAL TO ZEROS OR TO AVERAGE OF FIXED VALUES
+for I=1:NX-1
+    V(I+1,1)=V1;
+    V(I+1,NY+1)=V3;
+end
+for J=1:NY-1
+    V(1,J+1)=V4;
+    V(NX+1,J+1)=V2;
+end
+V(1,1)=(V1+V4)/2.0;
+V(NX+1,1)=(V1+V2)/2.0;
+V(1,NY+1)=(V3+V4)/2.0;
+V(NX+1,NY+1)=(V2+V3)/2.0;
+
+% FIND THE OPTIMUM OVER-RELAXATION FACTOR
+T=cos(pi/NX)+cos(pi/NY);
+W=(8-sqrt(64-16*T^2))/(T^2);
+
+W4=W/4;
+
+% ITERATION BEGINS
+NCOUNT=0;
+loop=1;
+while loop==1;
+    RMIN=0;
+    for I=1:NX-1
+        X=H*I;
+        for J=1:NY-1
+            Y=H*J;
+            G=-36.0*pi*X*(Y-1.0);
+            R=W4*(V(I+2,J+1)+V(I,J+1)+V(I+1,J+2)+V(I+1,J)-4.0*V(I+1,J+1)-G*H*H);
+            RMIN=RMIN+abs(R);
+            V(I+1,J+1)=V(I+1,J+1)+R;
+        end
+    end
+    
+    RMIN=RMIN/(NX*NY);
+    if (RMIN>=0.0001)
+        NCOUNT=NCOUNT+1;
+        if (NCOUNT>100)
+            loop=0;
+            disp('SOLUTION DOES NOT CONVERGE IN 100 ITERATIONS');
+        end
+    else
+        % Then RMIN is less than .0001 and then solution has converged
+        loop=0;
+    end
+end
+Vnum=V;
+
+% Grab original points a through i
+abc=zeros(1,9);
+a_tic=1;
+vec=[0:H:1];
+for ii=.25:.25:.75
+    for jj=.25:.25:.75
+        xind=find(vec==ii);
+        yind=find(vec==jj);
+        % disp([xind,yind])
+        abc(a_tic)=Vnum(xind,yind);
+        a_tic=a_tic+1;
+    end
+end
+
+% OUTPUT THE FINITE DIFFERENCE APPROX, RESULTS
+
+% REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH-
+% CALCULATE THE EXACT SOLUTION
+%
+% POISSON'S EQUATION WITH HOMOGENEOUS BOUNDARY CONDITIONS
+% SOLVED BY SERIES EXPANSION
+%REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH
+for I=1:NX-1
+    X=H*I;
+    for J=1:NY-1
+        Y=H*J;
+        SUM=0;
+        for M=1:10  % TAKE ONLY 10 TERMS OF THE SERIES
+            FM=M;
+            for N=1:10
+                FN=N;
+                FACTOR1=(FM*pi/A)^2+(FN*pi/B)^2;
+                FACTOR2=((-1)^(M+N))*144*A*B/(pi*FM*FN);
+                FACTOR3=1-(1-(-1)^N)/B;
+                FACTOR=FACTOR2*FACTOR3/FACTOR1;
+                SUM=SUM+FACTOR*sin(FM*pi*X/A)*sin(FN*pi*Y/B);
+            end
+        end
+        VH=SUM;
+        
+        % LAPLACE'S EQUATION WITH INHOMOGENEOUS BOUNDARY CONDITIONS
+        % SOLVED USING THE METHOD OF SEPARATION OF VARIABLES
+        
+        C1=4*V1/pi;
+        C2=4*V2/pi;
+        C3=4*V3/pi;
+        C4=4*V4/pi;
+        SUM=0;
+        for K=1:10  % TAKE ONLY 10 TERMS OF THE SERIES
+            N=2*K-1;
+            AN=N;
+            A1=sin(AN*pi*X/B);
+            A2=sinh(AN*pi*(A-Y)/B);
+            A3=AN*sinh(AN*pi*X/B);
+            TERM1=C1*A1*A2/A3;
+            B1=sinh(AN*pi*X/A);
+            B2=sin(AN*pi*Y/B);
+            B3=AN*sinh(AN*pi*B/A);
+            TERM2=C2*B1*B2/B3;
+            D1=sin(AN*pi*X/B);
+            D2=sinh(AN*pi*Y/B);
+            D3=AN*sinh(AN*pi*A/B);
+            TERM3=C3*D1*D2/D3;
+            E1=sinh(AN*pi*(B-X)/A);
+            E2=sin(AN*pi*Y/A);
+            E3=AN*sinh(AN*pi*B/A);
+            TERM4=C4*E1*E2/E3;
+            TERM=TERM1+TERM2+TERM3+TERM4;
+            SUM=SUM+TERM;
+        end
+        VI=SUM;
+        Vexact(I+1,J+1)=VH+VI;
+    end
+end
+
+% GRAB ORIGINAL POINTS A THROUGH i
+abc2=zeros(1,9);
+a_tic=1;
+vec=[0:H:1];
+for ii=.25:.25:.75
+    for jj=.25:.25:.75
+        xind=find(vec==ii);
+        yind=find(vec==jj);
+        % disp([xind,yind]);
+        abc2(a_tic)=Vexact(xind,yind);
+        a_tic=a_tic+1;
+    end
+end
+
+figure(1),
+imagesc(flipud(Vnum')),
+colorbar
+ylabel('y'),    xlabel('x')
+title('Example 3.4: Poisson PDE')
+
+format short g
+
+disp(['h=', num2str(H)])
+disp(['w =',num2str(W)])
+disp(['',num2str(NCOUNT),' iterations']);
+disp('|REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH-|')
+disp('|      numerical  | exact       |')
+disp('|REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH-|')
+disp([abc' abc2'])
+##### SOURCE END #####
+--></body></html>

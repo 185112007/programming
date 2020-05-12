@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	'use strict';
+
+	outer: for(let i=0; i<3; i++){
+		for(let j=0; j<3; j++){
+			let input = prompt(`Coordinate value (${i}, ${j})`, '');
+
+			// if empty line of cancel, exit both loops
+			if(!input) break outer;
+		}
+	}
+
+	alert('Ready!');
+</script>
+</body>
+</html>

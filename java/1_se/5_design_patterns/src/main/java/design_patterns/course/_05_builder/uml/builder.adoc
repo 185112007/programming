@@ -1,0 +1,33 @@
+=== Builder
+
+Yapıcı (builder) tasarım şablonu da soyut fabrika tasarım
+şablonunda olduğu gibi istenilen bir tipte nesne oluşturmak için kullanılmaktadır. İki tasarım
+şablonu arasındaki fark, yapıcı tasarım şablonunun karmaşık yapıdaki bir nesneyi değişik parçaları
+bir araya getirerek oluşturmasında yatmaktadır. Birden fazla adım içeren nesne üretim sürecinde,
+değişik parçalar birleştirilir ve istenilen tipte nesne oluşturulur.
+
+[plantuml]
+....
+@startuml
+
+interface Builder
+Builder : buildPart() : void
+
+Builder <|.. BuilderImpl: implements
+
+BuilderImpl : buildPart() : void
+BuilderImpl : getResult() : Product
+
+Director o- Builder: builder
+
+Director : construct(builder : Builder) : void
+
+BuilderImpl -> Coordinate
+
+@enduml
+....
+
+=== Yapıcı tasarım şablonu ne zaman kullanılır?
+- Değişik parametreler kullanılarak karmaşık yapıda bir nesnenin oluşturulması gerektiğinde.
+- Karmaşık yapıya sahip nesnenin oluşturulma sürecinin, sistemin diğer bölümlerinden bağımsız
+bir şekilde yapılması gerektiği durumlarda.

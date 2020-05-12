@@ -1,0 +1,38 @@
+[plantuml]
+....
+@startuml
+
+interface  MoveStrategy{
+   +getDirection(): MovingDirection
+}
+
+class AgressiveMoving implements MoveStrategy{
+   +getDirection(): MovingDirection
+}
+
+class SlowMoving implements MoveStrategy{
+   +getDirection(): MovingDirection
+}
+
+interface  DrawableMap{
+   +getMapComponent(): Component
+    
+   +getGameMap(): AbstractGameMap
+    
+   +drawMap(): boolean
+}
+
+class JTableGameMap implements DrawableMap{
+   -fillEmptyMap(): void
+   -updateObjectsArray(): void
+   
+   +drawMap(): void
+   +getMapComponent(): Component
+   +getGameMap(): AbstractGameMap
+   +drawMap(): boolean
+}
+
+JTableGameMap o- MoveStrategy
+
+@enduml
+....

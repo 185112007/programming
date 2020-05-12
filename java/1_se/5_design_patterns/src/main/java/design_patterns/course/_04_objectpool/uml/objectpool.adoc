@@ -1,0 +1,47 @@
+=== Object Pool
+
+Şimdi kullanmak istediğimiz nesneleri new ile oluşturmak yerine, bir nesne havuzundan temin
+eiğimizi düşünelim. Böyle bir yapının bize sağladığı avantajlar neler olurdu? Öncelikle nesne
+edinme sürecimiz hızlanırdı, çünkü biz nesneyi edinmek istediğimiz zaman new işlemenin
+gerçekleşmesi zorunluluğu ortadan kalmış olurdu. Karmaşık yapıya sahip nesnelerin oluşturulma
+süreçlerinin uzun olabileceğini düşündüğümüzde, bir nesneyi doğrudan edinmenin ne kadar
+avantajlı olabileceği görülmektedir.
+
+[plantuml]
+....
+@startuml
+
+abstract class AbstractGameObject{
+   {abstract} getType: GameObjectType 
+}
+
+abstract class ObjectPool{
+   -available: HashSet
+   -inUse: HashSet
+
+   {abstract} create(): T 
+   +checkOut(): T
+   +checkIn(): void
+}
+
+class Monster extends AbstractGameObject{
+   +getType: GameObjectType
+}
+
+class MonsterPool extends ObjectPool{
+   -instance: MonsterPool
+   +instance(): MonsterPool
+   #create(): Monster
+}
+
+ObjectPoolTest -> ObjectPool
+MonsterPool -> Monster
+
+@enduml
+....
+
+=== Nesne havuzu tasarım şablonu ne zaman kullanılır?
+
+- Sistem kaynaklarının kontrollü bir şekilde kullanılması gerektiğinde.
+- Kullanılan nesne adedine sınırlama getirilmek istendiğinde.
+- Nesne edinme süreci hızlandırılmak istendiğinde.

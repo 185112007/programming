@@ -1,0 +1,78 @@
+==== Memento Pattern(Hatırlayan)
+
+Bir nesneyi, daha önce sahip olduğu bir duruma tekrar dönüştürebilmek için memento tasarım şablonu 
+kullanılır.
+
+[plantuml]
+....
+@startuml
+
+class GameObjects {
+   -allObjects: ArrayList<AbstractGameObject>
+   +createMemento() : Memento
+   +setMemento(m: Memento): void 
+   +addObjects(index: int, obj: AbstractGameObject): void
+   +removeObject(index: int): void
+   +getObjects(): ArrayList<AbstractGameObject>
+   +setObjects(ArrayList<AbstractGameObject>): void
+}
+
+class Memento {
+   -elements: Object
+   +getElements(): Object
+   +setElements(o:Object): void
+}
+
+class Client {
+   
+}
+
+enum GameObjectType{
+   MONSTER 
+   TREASURE
+   EXIT
+   WALL
+   GOLDMAN
+   NOTHING
+}
+
+interface AbstractGameObject{
+   getType(): GameObjectType
+}
+
+class GoldMan{
+   -type: GameObjectType
+   +getType(): GameObjectType
+}
+
+class Monster{
+   -type: GameObjectType
+   +getType(): GameObjectType
+}
+
+class Wall{
+   -type: GameObjectType
+   +getType(): GameObjectType
+}
+
+Client .> GameObjects
+GameObjects --> Memento
+GameObjects --> AbstractGameObject
+Client *-- Memento
+
+GoldMan ..|> AbstractGameObject
+Monster ..|> AbstractGameObject
+Wall ..|> AbstractGameObject
+
+GoldMan *-- GameObjectType
+Monster *-- GameObjectType
+Wall *-- GameObjectType
+AbstractGameObject *-- GameObjectType
+
+@enduml
+....
+
+=== Memento tasarım şablonu ne zaman kullanılır?
+
+Bir nesnenin sahip olduğu son durumu saklamak için Memento tasarım şablonu 
+kullanılır.

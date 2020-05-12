@@ -1,0 +1,55 @@
+=== Gözetleyici (Obverser Pattern)
+Sistem bünyesinde, bir nesnede meydana gelen değişikliklerden haberdar olmak isteyen diğer
+nesneler olabilir. Bu durumda haberdar olmak isteyen nesneler abone olarak, abone oldukları
+nesnede meydana gelen değişikliklerden haberdar edilirler. Abone olan nesne aboneliğini iptal
+ederek, abone olduğu nesne ile arasındaki ilişkiyi sonlandırabilir.
+
+[plantuml]
+....
+@startuml
+
+interface  Player{
+   +addService(BildirimServisi): void
+   +removeService(BildirimServisi): void
+   +bilgilendir(): void
+}
+
+interface BildirimServisi{
+   +update(): void
+}
+
+class RegisteredPlayer implements Player{
+   -services: ArrayList
+   
+   +addService(BildirimServisi): void
+   +removeService(BildirimServisi): void
+   +bilgilendir(): void
+}
+
+class SesBildirim implements BildirimServisi{
+   -player: Player
+   
+   +update(): void
+   +subscribe(): void
+   +unsubscribe(): void
+}
+
+class OyunPaneliBildirimi implements BildirimServisi{
+   -player: Player
+
+   +update(): void
+   +subscribe(): void
+   +unsubscribe(): void
+}
+
+Player -> BildirimServisi
+RegisteredPlayer <-- SesBildirim
+RegisteredPlayer <-- OyunPaneliBildirimi
+
+@enduml
+....
+
+=== Gözetleyici tasarım şablonu ne zaman kullanılır?
+Bir nesne üzerinde yapılan değişiklik başka nesnelerin de değiştirilmesini zorunlu kılıyorsa ve kaç
+nesnenin değiştirilmesi gerektiğini bilmiyorsak, gözetleyici tasarım şablonun kullanarak nesneler
+üzerinde gerekli değişiklikleri uygulayabiliriz.

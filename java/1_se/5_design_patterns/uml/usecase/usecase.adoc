@@ -1,0 +1,38 @@
+[plantuml]
+.Use-Case Diyagramı
+....
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+actor player
+rectangle "Goldman"{
+
+  player -- (yeni oyuna basla)
+  player -- (devam et)
+  player -- (istatistileri goruntule)
+  player -- (oyundan cik)
+  
+  (yeni oyuna basla) ..> (yeni isim gir): include
+  (yeni isim gir) ..> (oyunu baslat): include
+  (yeni isim gir) <.. (hata uyarisi ver): extend
+  (hata uyarisi ver) ..> (ana menuye git): include
+  (yeni isim gir) ..> (yeni ismi kontrol et): include
+  
+  (devam et) ..> (kaydetigin ismi gir): include
+  (kaydetigin ismi gir) ..> (oyunu baslat): include
+  (kaydetigin ismi gir) <.. (hata uyarisi ver): extend
+  (kaydetigin ismi gir) ..> (isim listesinden kontrol et): include
+  
+  (istatistileri goruntule) ..> (puanlari sirala): include
+  (istatistileri goruntule) ..> (goruntule): include
+  
+  (oyundan cik) ..> (sistemi kapat): include
+  
+  note right of (oyunu baslat)
+  İsim kontrolleri
+  basarıyla gecilmisse
+  oyuna baslayabilecektir
+  end note
+}
+@enduml
+....

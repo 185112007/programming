@@ -1,0 +1,66 @@
+===  Factory
+
+Bu metot bünyesinde nesne oluşturulur ve kullanıcı sınıfa verilir. Kullanıcı
+sınıfın nesnenin hangi sınıftan olduklarını bilme zorunluluğu yoktur. Bu şekilde kullanıcı sınıfları
+değiştirmek zorunda kalmadan, fabrika metodu bünyesindeki nesne oluşum süreci ve nesnenin veri
+tipi tayin edilebilir.
+
+[plantuml]
+....
+@startuml
+
+class FactoryTest{
+
+}
+
+class GameObjectFactory{
+   {static} createObject(): AbstractGameObject
+}
+
+abstract class AbstractGameObject {
+   {abstract} getType(): GameObjectType
+}
+
+class Exit extends AbstractGameObject{
+   +getType(): GameObjectType
+}
+
+class GoldMan extends AbstractGameObject{
+   +getType(): GameObjectType
+}
+
+class Monster extends AbstractGameObject{
+   +getType(): GameObjectType
+}
+
+class Nothing extends AbstractGameObject{
+   +getType(): GameObjectType
+}
+
+class Treasure extends AbstractGameObject{
+   +getType(): GameObjectType
+}
+
+class Wall extends AbstractGameObject{
+   +getType(): GameObjectType
+}
+
+FactoryTest --> AbstractGameObject: use
+FactoryTest -> GameObjectFactory: ask for making an instance
+
+GameObjectFactory ---> Exit: makes
+GameObjectFactory ---> GoldMan: makes
+GameObjectFactory ---> Monster: makes
+GameObjectFactory ---> Nothing: makes
+GameObjectFactory ---> Treasure: makes
+GameObjectFactory ---> Wall: makes
+
+@enduml
+....
+
+=== Fabrika metodu tasarım şablonu ne zaman kullanılır?
+
+- Kullanıcı sınıf hangi altsınıfların kullanılması gerektiğini bilmiyorsa; Örneğin Application
+sınıfı Pdf ya da Work döküman tiplerini tanımıyor.
+- Kullanıcı sınıf altsınıflardan nasıl nesne üretilmesi gerektiğini bilmiyorsa.
+- Kullanıcı sınıf ihtiyaç duyulan nesnelerin oluşturulmasını altsınıflara delege etmek istiyorsa.

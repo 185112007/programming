@@ -1,0 +1,6 @@
+Translation process:
+	1. preprocessing: gcc -E main.c >> main.i	// output is main.i
+	2. compiling:	  gcc -S main.i -o main.s	// output is main.s
+	3. assembling:	  gcc -c main.s			// output is main.o
+Linking:(create executable file "myprog")
+	gcc -o myprog main.o

@@ -9,6 +9,7 @@
 int main(void)
 {
 	unsigned char i;
+
 	int n1[6];
 	n1[0] = 10; n1[1] = 25; n1[2] = 33; n1[3] = 71; n1[4] = 54; n1[5] = 99;
 
@@ -17,6 +18,7 @@ int main(void)
 	{
 		printf("%d ", n1[i]);
 	}
+
 
 	printf("\n\n2. ==========================================\n");
 	int n2[6] = {10, 25, 33, 71, 54, 99};
@@ -73,6 +75,7 @@ int main(void)
 	}
 	printf("\r\n");
 	printf(str2);
+
 
 	return 0;
 }

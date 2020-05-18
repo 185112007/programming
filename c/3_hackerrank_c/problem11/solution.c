@@ -9,22 +9,21 @@
 
 int main(void)
 {
-	int n;
-	int *arr;
+	int n, sum = 0;
+	int *ptr;
 
 	scanf("%d", &n);
-	arr = (int*)malloc(n * sizeof(int));
+	ptr = (int*)malloc(n * sizeof(int));
 
 	for (int i = 0; i < n; ++i)
 	{
-		scanf("%d ", arr[i]);
+		scanf("%d", ptr + i);
+		sum += *(ptr + i);
 	}
 
-	for (int i = 0; i < n; ++i)
-	{
-		printf("%d ", arr[i]);
-	}
-	printf("\n");
+	printf("%d\n", sum);
+
+	free(ptr);
 
 	return 0;
 }

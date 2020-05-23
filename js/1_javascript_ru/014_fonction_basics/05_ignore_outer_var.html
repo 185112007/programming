@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ignore Outer Variable</title>
+	<script type="text/javascript">
+		'use strict';
+
+		let username = 'John';
+
+		function showMessage(){
+			let username = "Bob";	// declare local variable
+
+			let message = 'Hello, ' + username;	// Bob
+			alert(message);
+		}
+
+		// the function will create and use its own username
+		showMessage();
+
+		alert(username);	// John, unchanged, the function did not access the outer variable
+	</script>
+</head>
+<body>
+
+</body>
+</html>

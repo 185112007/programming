@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Alternative Default Param V2</title>
+	<script type="text/javascript">
+		'use strict';
+
+		// if text parameter is ommited or "" is passed,
+		// set it to 'empty'
+		function showMessage(text){
+			text = text || 'empty';
+
+			alert(text);
+		}
+
+		showMessage();
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>

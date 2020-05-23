@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Changing Arguments</title>
+	<script type="text/javascript">
+		'use strict';
+
+		function showMessage(from, text){
+			from = '*' + from + '*';	// mke "from" look nicer
+			alert(from + ': ' + text);
+		}
+
+		let from = "Ann";
+		showMessage(from, "Hello");	// *Ann*: Hello
+
+		// the value of 'from' is the same, the function modified local variable
+		alert(from);				// Ann
+	</script>
+</head>
+<body>
+
+</body>
+</html>

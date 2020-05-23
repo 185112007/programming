@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Empty return value</title>
+	<script type="text/javascript">
+		'use strict';
+
+	function doNothing(){/* empty */}
+
+	function emptyReturn(){
+		return;
+	}
+
+	alert(doNothing() === undefined);	// true
+	alert(emptyReturn() === undefined);	// true
+	</script>
+</head>
+<body>
+
+</body>
+</html>

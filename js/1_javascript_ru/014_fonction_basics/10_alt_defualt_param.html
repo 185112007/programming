@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Alternative Default Parameters</title>
+	<script type="text/javascript">
+		'use strict';
+
+		function showMessage(text){
+			if(text === undefined){
+				text = 'empty message';
+			}
+
+			alert(text);
+		}
+
+		showMessage();	// empty message
+	</script>
+</head>
+<body>
+
+</body>
+</html>

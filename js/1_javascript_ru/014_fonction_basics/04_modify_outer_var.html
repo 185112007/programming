@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Modify Outer Variable</title>
+	<script type="text/javascript">
+		'use strict';
+
+		let username = 'John';
+
+		function showMessage(){
+			username = 'Bob';	// changed the outer variable
+
+			let message = 'Hello, ' + username;
+			alert(message);
+		}
+
+		alert(username);	// John before the function call
+
+		showMessage();
+
+		alert(username);	// Bob, the value was modified by the function
+	</script>
+</head>
+<body>
+
+</body>
+</html>

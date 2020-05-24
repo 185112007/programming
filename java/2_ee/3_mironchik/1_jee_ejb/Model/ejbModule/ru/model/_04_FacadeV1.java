@@ -6,10 +6,16 @@ import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.annotation.Resource;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
+import javax.interceptor.Interceptors;
+
+import ru.model.utils.TestInterceptor;
 
 @Stateless()		/* register session bean */
+@RolesAllowed(value = {"admins", "users", "bosses"})
+@Interceptors(value = {TestInterceptor.class})
 //@Startup			/* this annotation does not starts on startup session beans */
 public class _04_FacadeV1 implements FLocal, FRemote{
 	
@@ -41,7 +47,16 @@ public class _04_FacadeV1 implements FLocal, FRemote{
 	}
 
 	@Override
+	@RolesAllowed(value = {"users", "bosses"})
 	public String userInfo() {
-		return "User: " + sessionContext.getCallerPrincipal();
+		String r = "";
+		if(sessionContext.isCallerInRole("users")) {
+			r = "Role users";
+		}
+		if(sessionContext.isCallerInRole("bosses")) {
+			r = "Role bosses";
+		}
+		
+		return "User: " + sessionContext.getCallerPrincipal() + ", " + r;
 	}
 }

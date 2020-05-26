@@ -10,4 +10,13 @@
       <context-root>TestViewController</context-root>
     </web>
   </module>
+  <module>
+    <web>
+      <web-uri>RestService.war</web-uri>
+      <context-root>RestService</context-root>
+    </web>
+  </module>
+  <module>
+    <ejb>Phones.jar</ejb>
+  </module>
 </application>

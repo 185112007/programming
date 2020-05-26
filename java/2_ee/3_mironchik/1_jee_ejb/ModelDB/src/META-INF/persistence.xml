@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
 	<persistence-unit name="ModelPG">
-		<jta-data-source>jdbc/testpg</jta-data-source>
+		<non-jta-data-source>jdbc/testpg</non-jta-data-source>
+	</persistence-unit>
+	<persistence-unit name="pg-admin">
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+		<jta-data-source>jdbc/postgres/admin</jta-data-source>
+		<properties>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+			<property name="hibernate.show_sql" value="true"/>
+		</properties>
+	</persistence-unit>
+	<persistence-unit name="mysql-root">
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+		<jta-data-source>jdbc/mysql/root</jta-data-source>
+		<properties>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
+			<!-- <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/> -->
+			<property name="hibernate.show_sql" value="true"/>
+		</properties>
 	</persistence-unit>
 </persistence>

@@ -4,6 +4,8 @@ import java.time.LocalTime;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -21,6 +23,11 @@ import ru.modeldb.Info;
 @Consumes(value = "application/json")	/* tip request */
 public class Main {
 
+	@PersistenceContext(unitName = "mysql-root")
+	private EntityManager emMysql;
+	@PersistenceContext(unitName = "pg-admin")
+	private EntityManager emPostgres;
+	
     /**
      * Default constructor. 
      */
@@ -32,5 +39,14 @@ public class Main {
     @GET								/* vid metoda */
     public Info info() {
     	return new Info("Telefonnyy spravocnyy", LocalTime.now());
+    }
+    
+    @Path(value = "/infodb")			/* dostup k methodu */
+    @GET								/* vid metoda */
+    public Info infoDB() {
+    	Info info = new Info("Telefonnyy spravocnyy", LocalTime.now());
+    	info.setMysqlInfo(emMysql.toString());
+    	info.setPostgresInfo(emPostgres.toString());
+    	return info;
     }
 }

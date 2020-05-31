@@ -1,0 +1,32 @@
+Use Case Name			: Order Meal
+
+Author					: John Doe
+
+Last Revision			: 30 May 2020
+
+Actors					: Customer
+
+Uses					: Login Account
+
+Extends					: - (no extends)
+
+Pre-conditions			: Meal information is available in the system
+
+Main Scenario			: 1. System prompts the customer to choose between al-la-carte meals and set meals.
+						  2. Customer indicates a-la-carte meal.
+						  3. System retrieving the meals and displays them to the Customer.
+						  4. Customer selects a meal, indicates the quantity.
+						  5. Customer add the meal to the cart.
+						  6. System updates the cart.
+						     6.1. System checks if meal is available.
+						     6.2. If available, system updates the cart.
+						  7. Step 1 till 4 are repeated until all meals are selected.
+						  8. Customer proceeds to checkout.
+						  9. System displays the cart overview on screen.
+
+Other Scenarios			: 2. Customer indicates set meal.
+						  3. System retrieving the meals and displays them to the Customer. 
+
+Post-conditions			: Order is composed and ready for payment.						  
+						  
+Error-conditions		: 6.2. If meals is not available, the customer is notified the meal is not available.

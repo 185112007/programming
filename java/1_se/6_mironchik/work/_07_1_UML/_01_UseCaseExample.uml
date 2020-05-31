@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_vs-9oKHLEeqGd5MZErZJUA" name="FoodOrderSystem">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_wEgFwKHLEeqGd5MZErZJUA">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Package" xmi:id="_DuKM8KHMEeqGd5MZErZJUA" name="System">
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_LePeEKHMEeqGd5MZErZJUA" name="Login Account"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_OOFIcKHMEeqGd5MZErZJUA" name="Order Meal">
+      <include xmi:type="uml:Include" xmi:id="_zxgGgKHMEeqGd5MZErZJUA" addition="_LePeEKHMEeqGd5MZErZJUA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_ZLDMUKHMEeqGd5MZErZJUA" name="Make Payment">
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_09excKHMEeqGd5MZErZJUA" name="ExtensionPoint1"/>
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_1vuGsKHMEeqGd5MZErZJUA" name="ExtensionPoint2"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_cYIzYKHMEeqGd5MZErZJUA" name="Make Credit Card Payment">
+      <extend xmi:type="uml:Extend" xmi:id="_09cVMKHMEeqGd5MZErZJUA" extendedCase="_ZLDMUKHMEeqGd5MZErZJUA" extensionLocation="_09excKHMEeqGd5MZErZJUA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_kEpMEKHMEeqGd5MZErZJUA" name="Make PayPal Payment">
+      <extend xmi:type="uml:Extend" xmi:id="_1vs4kKHMEeqGd5MZErZJUA" extendedCase="_ZLDMUKHMEeqGd5MZErZJUA" extensionLocation="_1vuGsKHMEeqGd5MZErZJUA"/>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_JGNPsKHMEeqGd5MZErZJUA" name="Customer"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_nBk3QKHMEeqGd5MZErZJUA" name="A customer login account" memberEnd="_nBySoKHMEeqGd5MZErZJUA _nB2kEKHMEeqGd5MZErZJUA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_nBvPUKHMEeqGd5MZErZJUA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_nBv2YKHMEeqGd5MZErZJUA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <generalization xmi:type="uml:Generalization" xmi:id="_PmsEsKHNEeqGd5MZErZJUA" general="_6L5-IKHMEeqGd5MZErZJUA"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_nBySoKHMEeqGd5MZErZJUA" name="login account" type="_LePeEKHMEeqGd5MZErZJUA" association="_nBk3QKHMEeqGd5MZErZJUA"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_nB2kEKHMEeqGd5MZErZJUA" name="customer" type="_JGNPsKHMEeqGd5MZErZJUA" association="_nBk3QKHMEeqGd5MZErZJUA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_r7w5UKHMEeqGd5MZErZJUA" name="A customer order meal" memberEnd="_r7yugKHMEeqGd5MZErZJUA _r7zVkKHMEeqGd5MZErZJUA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_r7yHcKHMEeqGd5MZErZJUA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_r7yHcaHMEeqGd5MZErZJUA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_r7yugKHMEeqGd5MZErZJUA" name="order meal" type="_OOFIcKHMEeqGd5MZErZJUA" association="_r7w5UKHMEeqGd5MZErZJUA"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_r7zVkKHMEeqGd5MZErZJUA" name="customer" type="_JGNPsKHMEeqGd5MZErZJUA" association="_r7w5UKHMEeqGd5MZErZJUA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_wKT9YKHMEeqGd5MZErZJUA" name="A customer make payment" memberEnd="_wKWZoKHMEeqGd5MZErZJUA _wKWZoaHMEeqGd5MZErZJUA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_wKVLgKHMEeqGd5MZErZJUA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_wKVykKHMEeqGd5MZErZJUA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_wKWZoKHMEeqGd5MZErZJUA" name="make payment" type="_ZLDMUKHMEeqGd5MZErZJUA" association="_wKT9YKHMEeqGd5MZErZJUA"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_wKWZoaHMEeqGd5MZErZJUA" name="customer" type="_JGNPsKHMEeqGd5MZErZJUA" association="_wKT9YKHMEeqGd5MZErZJUA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_6L5-IKHMEeqGd5MZErZJUA" name="User"/>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_9y1BgKHMEeqGd5MZErZJUA" name="Manager">
+    <generalization xmi:type="uml:Generalization" xmi:id="_Kjc0UKHNEeqGd5MZErZJUA" general="_6L5-IKHMEeqGd5MZErZJUA"/>
+  </packagedElement>
+</uml:Model>

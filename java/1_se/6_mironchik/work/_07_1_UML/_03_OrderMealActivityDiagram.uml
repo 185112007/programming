@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_JFNbEKHVEeqGd5MZErZJUA" name="_03_OrderMealActivityDiagram">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_JKUkkKHVEeqGd5MZErZJUA">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Activity" xmi:id="_JGRyEKHVEeqGd5MZErZJUA" name="Activity1" node="_NPgRQKHVEeqGd5MZErZJUA _QvK2EKHVEeqGd5MZErZJUA _NYLaMKHXEeqGd5MZErZJUA _XQ7A8KHXEeqGd5MZErZJUA _-G2vwKHXEeqGd5MZErZJUA _m8LjcKHYEeqGd5MZErZJUA _CuWp4KHZEeqGd5MZErZJUA _G08EwKHZEeqGd5MZErZJUA _PTe-YKHZEeqGd5MZErZJUA _SemPgKHZEeqGd5MZErZJUA _nPrRwKHZEeqGd5MZErZJUA _gEyi8KHaEeqGd5MZErZJUA _qRj48KHaEeqGd5MZErZJUA _5CjBAKHaEeqGd5MZErZJUA __dV6MKHaEeqGd5MZErZJUA _PPvb8KHbEeqGd5MZErZJUA _WqmD8KHbEeqGd5MZErZJUA _e2nqMKHbEeqGd5MZErZJUA _skfvcKHbEeqGd5MZErZJUA _KYdugKHcEeqGd5MZErZJUA _N0yrcKHcEeqGd5MZErZJUA _SJYGEKHcEeqGd5MZErZJUA _T0wCwKHcEeqGd5MZErZJUA _bNlRgKHcEeqGd5MZErZJUA _AZa2AKHdEeqGd5MZErZJUA">
+    <edge xmi:type="uml:ControlFlow" xmi:id="_jDt5kKHXEeqGd5MZErZJUA" name="A-la-carte meals" target="_NYLaMKHXEeqGd5MZErZJUA" source="_QvK2EKHVEeqGd5MZErZJUA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_qjMi4KHXEeqGd5MZErZJUA" name="Set Meals" target="_XQ7A8KHXEeqGd5MZErZJUA" source="_QvK2EKHVEeqGd5MZErZJUA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_T6YtgKHYEeqGd5MZErZJUA" target="_skfvcKHbEeqGd5MZErZJUA" source="_NYLaMKHXEeqGd5MZErZJUA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_k9SN0KHYEeqGd5MZErZJUA" target="_skfvcKHbEeqGd5MZErZJUA" source="_XQ7A8KHXEeqGd5MZErZJUA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_YNJGsKHZEeqGd5MZErZJUA" target="_G08EwKHZEeqGd5MZErZJUA" source="_CuWp4KHZEeqGd5MZErZJUA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_bg26MKHZEeqGd5MZErZJUA" name="Not available" target="_PTe-YKHZEeqGd5MZErZJUA" source="_G08EwKHZEeqGd5MZErZJUA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_dyu2MKHZEeqGd5MZErZJUA" target="_SemPgKHZEeqGd5MZErZJUA" source="_G08EwKHZEeqGd5MZErZJUA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_qzJ_kKHZEeqGd5MZErZJUA" target="_nPrRwKHZEeqGd5MZErZJUA" source="_SemPgKHZEeqGd5MZErZJUA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_s8N90KHZEeqGd5MZErZJUA" target="_nPrRwKHZEeqGd5MZErZJUA" source="_PTe-YKHZEeqGd5MZErZJUA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_KbOZgKHaEeqGd5MZErZJUA" name="Not all meals selected" target="_WqmD8KHbEeqGd5MZErZJUA" source="_qRj48KHaEeqGd5MZErZJUA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_xN_fkKHaEeqGd5MZErZJUA" target="_qRj48KHaEeqGd5MZErZJUA" source="_nPrRwKHZEeqGd5MZErZJUA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_z9HYQKHaEeqGd5MZErZJUA" name="All meals selected" target="_gEyi8KHaEeqGd5MZErZJUA" source="_qRj48KHaEeqGd5MZErZJUA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_83xmIKHaEeqGd5MZErZJUA" target="_5CjBAKHaEeqGd5MZErZJUA" source="_gEyi8KHaEeqGd5MZErZJUA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_EfhaoKHbEeqGd5MZErZJUA" target="__dV6MKHaEeqGd5MZErZJUA" source="_5CjBAKHaEeqGd5MZErZJUA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_GYwNIKHbEeqGd5MZErZJUA" target="_m8LjcKHYEeqGd5MZErZJUA" source="_-G2vwKHXEeqGd5MZErZJUA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_NN3DwKHbEeqGd5MZErZJUA" target="_CuWp4KHZEeqGd5MZErZJUA" source="_m8LjcKHYEeqGd5MZErZJUA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_jXemQKHbEeqGd5MZErZJUA" target="_WqmD8KHbEeqGd5MZErZJUA" source="_e2nqMKHbEeqGd5MZErZJUA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_ovVbwKHbEeqGd5MZErZJUA" target="_PPvb8KHbEeqGd5MZErZJUA" source="_WqmD8KHbEeqGd5MZErZJUA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_rAEIQKHbEeqGd5MZErZJUA" target="_QvK2EKHVEeqGd5MZErZJUA" source="_PPvb8KHbEeqGd5MZErZJUA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_3dKiIKHbEeqGd5MZErZJUA" target="_-G2vwKHXEeqGd5MZErZJUA" source="_skfvcKHbEeqGd5MZErZJUA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_Q95KYKHcEeqGd5MZErZJUA" target="_KYdugKHcEeqGd5MZErZJUA" source="_N0yrcKHcEeqGd5MZErZJUA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_W9kN0KHcEeqGd5MZErZJUA" target="_SJYGEKHcEeqGd5MZErZJUA" source="_KYdugKHcEeqGd5MZErZJUA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_ZpBHcKHcEeqGd5MZErZJUA" target="_T0wCwKHcEeqGd5MZErZJUA" source="_KYdugKHcEeqGd5MZErZJUA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_9U_bsKHcEeqGd5MZErZJUA" target="_bNlRgKHcEeqGd5MZErZJUA" source="_SJYGEKHcEeqGd5MZErZJUA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="__oRs8KHcEeqGd5MZErZJUA" target="_bNlRgKHcEeqGd5MZErZJUA" source="_T0wCwKHcEeqGd5MZErZJUA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_P6HjwKHdEeqGd5MZErZJUA" target="_AZa2AKHdEeqGd5MZErZJUA" source="_bNlRgKHcEeqGd5MZErZJUA"/>
+    <node xmi:type="uml:InitialNode" xmi:id="_NPgRQKHVEeqGd5MZErZJUA" name="InitialNode1"/>
+    <node xmi:type="uml:DecisionNode" xmi:id="_QvK2EKHVEeqGd5MZErZJUA" name="the choose between a-la-carte and set meals" incoming="_rAEIQKHbEeqGd5MZErZJUA" outgoing="_jDt5kKHXEeqGd5MZErZJUA _qjMi4KHXEeqGd5MZErZJUA"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_NYLaMKHXEeqGd5MZErZJUA" name="System retrieves a-la-carte meals" incoming="_jDt5kKHXEeqGd5MZErZJUA" outgoing="_T6YtgKHYEeqGd5MZErZJUA"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_XQ7A8KHXEeqGd5MZErZJUA" name="System retrieves set meals" incoming="_qjMi4KHXEeqGd5MZErZJUA" outgoing="_k9SN0KHYEeqGd5MZErZJUA"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_-G2vwKHXEeqGd5MZErZJUA" name="Customer selects meal, indicates the quantity" incoming="_3dKiIKHbEeqGd5MZErZJUA" outgoing="_GYwNIKHbEeqGd5MZErZJUA"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_m8LjcKHYEeqGd5MZErZJUA" name="Customer add the meal to the cart" incoming="_GYwNIKHbEeqGd5MZErZJUA" outgoing="_NN3DwKHbEeqGd5MZErZJUA"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_CuWp4KHZEeqGd5MZErZJUA" name="System checks if meal is available" incoming="_NN3DwKHbEeqGd5MZErZJUA" outgoing="_YNJGsKHZEeqGd5MZErZJUA"/>
+    <node xmi:type="uml:DecisionNode" xmi:id="_G08EwKHZEeqGd5MZErZJUA" name="Meal is available?" incoming="_YNJGsKHZEeqGd5MZErZJUA" outgoing="_bg26MKHZEeqGd5MZErZJUA _dyu2MKHZEeqGd5MZErZJUA"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_PTe-YKHZEeqGd5MZErZJUA" name="System notifies customer" incoming="_bg26MKHZEeqGd5MZErZJUA" outgoing="_s8N90KHZEeqGd5MZErZJUA"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_SemPgKHZEeqGd5MZErZJUA" name="System adds the meals to cart" incoming="_dyu2MKHZEeqGd5MZErZJUA" outgoing="_qzJ_kKHZEeqGd5MZErZJUA"/>
+    <node xmi:type="uml:DecisionNode" xmi:id="_nPrRwKHZEeqGd5MZErZJUA" incoming="_qzJ_kKHZEeqGd5MZErZJUA _s8N90KHZEeqGd5MZErZJUA" outgoing="_xN_fkKHaEeqGd5MZErZJUA"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_gEyi8KHaEeqGd5MZErZJUA" name="Customer proceeds to checkout" incoming="_z9HYQKHaEeqGd5MZErZJUA" outgoing="_83xmIKHaEeqGd5MZErZJUA"/>
+    <node xmi:type="uml:DecisionNode" xmi:id="_qRj48KHaEeqGd5MZErZJUA" name="" incoming="_xN_fkKHaEeqGd5MZErZJUA" outgoing="_KbOZgKHaEeqGd5MZErZJUA _z9HYQKHaEeqGd5MZErZJUA"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_5CjBAKHaEeqGd5MZErZJUA" name="Display cart overview" incoming="_83xmIKHaEeqGd5MZErZJUA" outgoing="_EfhaoKHbEeqGd5MZErZJUA"/>
+    <node xmi:type="uml:ActivityFinalNode" xmi:id="__dV6MKHaEeqGd5MZErZJUA" name="" incoming="_EfhaoKHbEeqGd5MZErZJUA"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_PPvb8KHbEeqGd5MZErZJUA" name="System prompts for meal option selection" incoming="_ovVbwKHbEeqGd5MZErZJUA" outgoing="_rAEIQKHbEeqGd5MZErZJUA"/>
+    <node xmi:type="uml:DecisionNode" xmi:id="_WqmD8KHbEeqGd5MZErZJUA" name="" incoming="_jXemQKHbEeqGd5MZErZJUA _KbOZgKHaEeqGd5MZErZJUA" outgoing="_ovVbwKHbEeqGd5MZErZJUA"/>
+    <node xmi:type="uml:InitialNode" xmi:id="_e2nqMKHbEeqGd5MZErZJUA" name="" outgoing="_jXemQKHbEeqGd5MZErZJUA"/>
+    <node xmi:type="uml:DecisionNode" xmi:id="_skfvcKHbEeqGd5MZErZJUA" name="" incoming="_T6YtgKHYEeqGd5MZErZJUA _k9SN0KHYEeqGd5MZErZJUA" outgoing="_3dKiIKHbEeqGd5MZErZJUA"/>
+    <node xmi:type="uml:ForkNode" xmi:id="_KYdugKHcEeqGd5MZErZJUA" name="" incoming="_Q95KYKHcEeqGd5MZErZJUA" outgoing="_W9kN0KHcEeqGd5MZErZJUA _ZpBHcKHcEeqGd5MZErZJUA"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_N0yrcKHcEeqGd5MZErZJUA" name="OpaqueAction41" outgoing="_Q95KYKHcEeqGd5MZErZJUA"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_SJYGEKHcEeqGd5MZErZJUA" name="OpaqueAction43" incoming="_W9kN0KHcEeqGd5MZErZJUA" outgoing="_9U_bsKHcEeqGd5MZErZJUA"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_T0wCwKHcEeqGd5MZErZJUA" name="OpaqueAction44" incoming="_ZpBHcKHcEeqGd5MZErZJUA" outgoing="__oRs8KHcEeqGd5MZErZJUA"/>
+    <node xmi:type="uml:JoinNode" xmi:id="_bNlRgKHcEeqGd5MZErZJUA" name="JoinNode" incoming="_9U_bsKHcEeqGd5MZErZJUA __oRs8KHcEeqGd5MZErZJUA" outgoing="_P6HjwKHdEeqGd5MZErZJUA"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_AZa2AKHdEeqGd5MZErZJUA" name="OpaqueAction50" incoming="_P6HjwKHdEeqGd5MZErZJUA"/>
+  </packagedElement>
+</uml:Model>

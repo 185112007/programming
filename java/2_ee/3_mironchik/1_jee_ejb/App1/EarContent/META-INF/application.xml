@@ -19,4 +19,7 @@
   <module>
     <ejb>Phones.jar</ejb>
   </module>
+  <module>
+    <ejb>DeptEmps.jar</ejb>
+  </module>
 </application>

@@ -6,6 +6,10 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import ru.modeldb.postgres.Emp;
+
 public class MainPost {
 
 	public static void main(String[] args) throws IOException, InterruptedException {
@@ -27,7 +31,14 @@ public class MainPost {
 		}
 		System.out.println(response.statusCode());
 		System.out.println(response.body());
-
+		
+		ObjectMapper mapper = new ObjectMapper();
+		
+		Emp emp = mapper.readValue(response.body(), Emp.class);
+		System.out.println(emp);
+		emp.setSal(emp.getSal() + 1);
+		System.out.println(emp);
+		
 	}
 
 }

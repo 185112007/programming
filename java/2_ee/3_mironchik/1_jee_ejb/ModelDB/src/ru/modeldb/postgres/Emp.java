@@ -1,10 +1,11 @@
 package ru.modeldb.postgres;
 
 import java.io.Serializable;
-import java.sql.Date;
 import java.sql.Timestamp;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 /**
  * Entity implementation class for Entity: emp
@@ -24,9 +25,8 @@ public class Emp implements Serializable {
 	private int empno;
 	private String ename;
 	private String job;
-//	private Date hiredate;		// just date like '2001-02-17'
-	private Timestamp hiredate;	// same with java.util.Date
-//	private java.util.Date hiredate;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
+	private Timestamp hiredate;
 	private Float sal;
 	private Integer deptno;
 	
@@ -87,4 +87,11 @@ public class Emp implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+	@Override
+	public String toString() {
+		return "Emp [empno=" + empno + ", ename=" + ename + ", job=" + job + ", hiredate=" + hiredate + ", sal=" + sal
+				+ ", deptno=" + deptno + "]";
+	}
+	
 }
